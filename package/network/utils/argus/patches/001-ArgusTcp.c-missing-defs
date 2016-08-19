@@ -1,0 +1,19 @@
+--- a/argus/ArgusTcp.c    2015-12-01 07:48:09.255288435 -0500
++++ b/argus/ArgusTcp.c    2015-12-01 07:46:24.791012889 -0500
+@@ -42,6 +42,16 @@
+
+ extern void ArgusZeroRecord(struct ArgusFlowStruct *);
+
++/* OpenWrt missing defs */
++#ifndef TCPOPT_EOL
++#define TCPOPT_EOL     0
++#endif
++#ifndef TCPOPT_NOP
++#define TCPOPT_NOP     1
++#endif
++#ifndef TCPOPT_MAXSEG
++#define TCPOPT_MAXSEG  2
++#endif
+
+ /* These tcp optinos do not have the size octet */
+ #define ZEROLENOPT(o) ((o) == TCPOPT_EOL || (o) == TCPOPT_NOP)
